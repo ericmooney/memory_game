@@ -14,6 +14,7 @@ body {
 
 #board .tile,
 #board .tile img {
+  display: block;
   height: 100px;
   width: 100px;
   background: purple;
@@ -25,4 +26,8 @@ body {
 
 #board .tile img {
   visibility: hidden;
+}
+
+#board .tile.active img {
+  visibility: visible;
 }

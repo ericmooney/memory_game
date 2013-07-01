@@ -29,6 +29,11 @@ $(document).ready(function(){
       $.each(selected, function(index, matched_tile) {
         matched_tile.addClass('matched');
       });
+
+      if ($('.tile.matched').size() == tiles.length){
+        alert('You Win! You found all the matches in ' + num_clicks + ' clicks!');
+        window.location.href = window.location.href;
+      }
     }
   };
 

@@ -4,9 +4,16 @@ $(document).ready(function(){
   var num_clicks = 0;
   var selected = [];
 
+  var is_current_selection_a_match = function() {
+    var img1src = selected[0].find('img').attr('src');
+    var img2src = selected[1].find('img').attr('src');
+    return (img1src == img2src);
+
+  };
+
   var handle_click = function() {
     var tile = $(this);
-    if (tile.hasClass('active')){
+    if (tile.hasClass('active') || tile.hasClass('matched')){
       return false;
     }
     if (selected.length == 2){
@@ -16,6 +23,13 @@ $(document).ready(function(){
     num_clicks++;
     tile.addClass('active');
     selected.push(tile);
+
+    if (selected.length == 2 && is_current_selection_a_match()) {
+
+      $.each(selected, function(index, matched_tile) {
+        matched_tile.addClass('matched');
+      });
+    }
   };
 
   $.each(tiles, function(index, tile) {
